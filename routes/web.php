@@ -18,7 +18,11 @@ Route::get('/', function () {
 });
 
 Route::get('/blog/{blog}', function ($filename) {
-    $blog = file_get_contents(__DIR__."/../resources/blogs/$filename.html");
+    $path = __DIR__."/../resources/blogs/$filename.html";
+    if(!file_exists($path)){
+        abort(404);
+    }
+    $blog = file_get_contents($path);
     return view('blog',[
         'blog'=>$blog
     ]);
