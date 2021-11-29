@@ -17,6 +17,9 @@ Route::get('/', function () {
     return view('blogs');
 });
 
-Route::get('/blog', function () {
-    return view('blog');
+Route::get('/blog/{blog}', function ($filename) {
+    $blog = file_get_contents(__DIR__."/../resources/blogs/$filename.html");
+    return view('blog',[
+        'blog'=>$blog
+    ]);
 });
