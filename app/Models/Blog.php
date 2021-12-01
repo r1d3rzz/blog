@@ -1,9 +1,18 @@
 <?php
 namespace App\Models;
 
-    class Blog {
+use Illuminate\Support\Facades\File;
+
+class Blog {
+
+        public static function all(){
+            $files = File::files(resource_path("blogs"));
+            return array_map(function($file){
+                return $file->getContents();//use getContents() function
+            },$files);
+        }
+
         public static function find($slug){
-            // $path = __DIR__."/../resources/blogs/$slug.html"; note That
             $path = resource_path("blogs/$slug.html");
             if(!file_exists($path)){
                 return redirect('/');

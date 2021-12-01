@@ -8,19 +8,10 @@
     <title>Blogs</title>
 </head>
 <body>
-    <h1><a href="/blog/first-blog">First Blog</a></h1>
-    <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit adipisci incidunt quas eaque, voluptas cumque illum a hic doloribus provident minus quam dolores porro sint quia, pariatur perferendis deserunt debitis ratione. Fugiat, illo, incidunt quaerat voluptatibus quam eius laborum labore iusto minima odit illum dignissimos corrupti praesentium vero a cumque.
-    </p>
+    <?php foreach($blogs as $blog):?>
 
-    <h1><a href="/blog/second-blog">Second Blog</a></h1>
-    <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit adipisci incidunt quas eaque, voluptas cumque illum a hic doloribus provident minus quam dolores porro sint quia, pariatur perferendis deserunt debitis ratione. Fugiat, illo, incidunt quaerat voluptatibus quam eius laborum labore iusto minima odit illum dignissimos corrupti praesentium vero a cumque.
-    </p>
+        <?=$blog;?>
 
-    <h1><a href="/blog/third-blog">Third Blog</a></h1>
-    <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit adipisci incidunt quas eaque, voluptas cumque illum a hic doloribus provident minus quam dolores porro sint quia, pariatur perferendis deserunt debitis ratione. Fugiat, illo, incidunt quaerat voluptatibus quam eius laborum labore iusto minima odit illum dignissimos corrupti praesentium vero a cumque.
-    </p>
+    <?php endforeach; ?>
 </body>
 </html>

@@ -15,18 +15,20 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('blogs');
+    return view('blogs',[
+        'blogs'=>Blog::all()
+    ]);
 });
 
 /*
     retractoring blog Route
 
     like That Blog::find($slug);
+              Blog::all();
 */
 
 Route::get('/blog/{blog}', function ($slug) {
 
-    // $blog = Blog::find($slug); note That
     return view('blog',[
         'blog'=> Blog::find($slug)
     ]);
