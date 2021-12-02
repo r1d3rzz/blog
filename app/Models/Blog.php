@@ -2,14 +2,40 @@
 namespace App\Models;
 
 use Illuminate\Support\Facades\File;
+use Spatie\YamlFrontMatter\YamlFrontMatter;
+/*
 
+install composer package : composer require spatie/yaml-front-matter
+and use That Package and Change Object Type in BLogs Folder > ...
+
+ */
 class Blog {
+
+        public $title;
+        public $slug;
+        public $intro;
+        public $body;
+
+        public function __construct($title,$slug,$intro,$body) {
+            $this->title = $title;
+            $this->slug = $slug;
+            $this->intro = $intro;
+            $this->body = $body;
+        }
 
         public static function all(){
             $files = File::files(resource_path("blogs"));
-            return array_map(function($file){
-                return $file->getContents();//use getContents() function
-            },$files);
+            $blogs = [];
+            foreach($files as $file){
+                $obj=YamlFrontMatter::parseFile($file);
+                $blog = new Blog($obj->title,$obj->slug,$obj->intro,$obj->body());
+                $blogs[]=$blog;
+            }
+            return $blogs;
+
+            // return array_map(function($file){
+            //     return $file->getContents();
+            // },$files);
         }
 
         public static function find($slug){
