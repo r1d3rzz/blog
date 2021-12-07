@@ -9,7 +9,11 @@
 </head>
 <body>
 
-    <?=$blog;?>
+    <h1><?=$blog->title;?></h1>
+
+    <p>
+        <?=$blog->body;?>
+    </p>
 
     <p><a href="/">back to home</a></p>
 </body>
