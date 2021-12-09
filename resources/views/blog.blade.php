@@ -1,20 +1,17 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="/css/app.css">
-    <title>blog</title>
-</head>
-<body>
+@extends('layout')
 
-    <h1>{{$blog->title}}</h1>
+@section('title')
+    <title>{{$blog->title}}</title>
+@endsection
 
-    <span>{{$blog->date}}</span>
+@section('content')
 
-    <p>{!!$blog->body!!}</p>
+<h1>{{$blog->title}}</h1>
 
-    <p><a href="/">back to home</a></p>
-</body>
-</html>
+<span>{{$blog->date}}</span>
+
+<p>{!!$blog->body!!}</p>
+
+<p><a href="/">back to home</a></p>
+
+@endsection
