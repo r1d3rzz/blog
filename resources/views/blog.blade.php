@@ -9,11 +9,11 @@
 </head>
 <body>
 
-    <h1><?=$blog->title;?></h1>
+    <h1>{{$blog->title}}</h1>
 
-    <p>
-        <?=$blog->body;?>
-    </p>
+    <span>{{$blog->date}}</span>
+
+    <p>{!!$blog->body!!}</p>
 
     <p><a href="/">back to home</a></p>
 </body>

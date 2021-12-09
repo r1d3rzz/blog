@@ -8,13 +8,15 @@
     <title>Blogs</title>
 </head>
 <body>
-    <?php foreach($blogs as $blog):?>
 
-        <a href="blog/<?=$blog->slug;?>"><h1><?=$blog->title;?></h1></a>
+    @foreach ($blogs as $blog)
+        <h1><a href="blog/{{$blog->slug}}">{{$blog->title}}</a></h1>
 
         <div>
-            <p><?=$blog->intro;?></p>
+            <p>{{$blog->date}}</p>
+            <p>{{$blog->intro}}</p>
         </div>
-    <?php endforeach; ?>
+    @endforeach
+
 </body>
 </html>
