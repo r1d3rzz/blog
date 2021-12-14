@@ -1,6 +1,7 @@
 <?php
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Support\Facades\File;
 use Spatie\YamlFrontMatter\YamlFrontMatter;
 
@@ -21,18 +22,6 @@ class Blog {
             $this->date = $date;
         }
 
-        /*
-
-            use laravel buit in function "collect()->"
-
-            $blogs = collect($files)->map(function($file){
-
-            });
-
-            ->sortBy()
-
-        */
-
         public static function all(){
 
             return collect( File::files(resource_path("blogs")))
@@ -45,5 +34,14 @@ class Blog {
         public static function find($slug){
             $blogs = static::all();
             return $blogs->firstWhere('slug',$slug);
+        }
+
+        public static function findOrFail($slug){
+            $blogs = static::all();
+            $blog = $blogs->firstWhere('slug',$slug);
+            if(!$blog){
+                throw new ModelNotFoundException();
+            }
+            return $blog;
         }
     }
