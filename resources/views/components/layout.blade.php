@@ -5,17 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="/css/app.css">
-    @yield('title')
+    {{$title}}
 </head>
 <body>
 
-    <nav>
-        <a href="#">Main</a>
-        <a href="#">About</a>
-        <a href="#">Page</a>
-    </nav>
+    <x-navbar/>
 
-    @yield('content')
+    {{$slot}}
 
 </body>
 </html>
