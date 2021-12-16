@@ -8,7 +8,7 @@
 
     <h1>{{$blog->title}}</h1>
 
-    <span>{{$blog->date}}</span>
+    <span>{{$blog->created_at->diffForHumans()}}</span>
 
     <p>{!!$blog->body!!}</p>
 

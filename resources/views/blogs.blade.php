@@ -8,7 +8,7 @@
         <h1><a href="blog/{{$blog->id}}">{{$blog->title}}</a></h1>
 
         <div>
-            <p>{{$blog->date}}</p>
+            <p>{{$blog->created_at->diffForHumans()}}</p>
             <p>{{$blog->intro}}</p>
         </div>
     @endforeach
