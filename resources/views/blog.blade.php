@@ -8,7 +8,7 @@
 
     <h1>{{$blog->title}}</h1>
 
-    <span>{{$blog->created_at->diffForHumans()}}</span>
+    <span style="color: blue">{{$blog->created_at->diffForHumans()}}</span>
 
     <p>{!!$blog->body!!}</p>
 
