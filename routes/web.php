@@ -20,16 +20,9 @@ Route::get('/', function () {
     ]);
 });
 
-/*
-    retractoring blog Route
-
-    like That Blog::find($slug);
-              Blog::all();
-*/
-
-Route::get('/blog/{blog}', function ($id) {
+Route::get('/blog/{blog}', function (Blog $blog) { //Blog::findOrFail($id)
 
     return view('blog',[
-        'blog'=> Blog::findOrFail($id)
+        'blog'=> $blog
     ]);
 })->where('blog','[A-z\d\-_]+');
