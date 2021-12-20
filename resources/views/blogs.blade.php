@@ -7,6 +7,8 @@
     @foreach ($blogs as $blog)
         <h1><a href="blog/{{$blog->slug}}">{{$blog->title}}</a></h1>
 
+        <p><a href="">{{$blog->category->title}}</a></p>
+
         <div>
             <p style="color: green">{{$blog->created_at->diffForHumans()}}</p>
             <p>{{$blog->intro}}</p>
