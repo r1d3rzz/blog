@@ -19,26 +19,25 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('blogs',[
-        'blogs'=>Blog::with('category')->get() //with pr yin eager load // lazy loading
+        'blogs'=>Blog::with('category','author')->get() //with pr yin eager load // lazy loading
     ]);
 });
 
 Route::get('/blog/{blog:slug}', function (Blog $blog) {
 
     return view('blog',[
-        'blog'=> $blog
+        'blog'=> $blog->load('category','author')
     ]);
 })->where('blog','[A-z\d\-_]+');
 
 Route::get('categories/{category:slug}',function(Category $category){
-    // dd($category->blogs);
     return view('blogs',[
-        'blogs'=>$category->blogs
+        'blogs'=>$category->blogs->load('category','author')
     ]);
 });
 
-Route::get('/user/{user:name}',function(User $user){
+Route::get('/users/{user}',function(User $user){
     return view('blogs',[
-        'blogs'=>$user->blogs
+        'blogs'=>$user->blogs->load('author','category')
     ]);
 });
