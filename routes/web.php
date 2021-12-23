@@ -2,6 +2,7 @@
 
 use App\Models\Blog;
 use App\Models\Category;
+use App\Models\User;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 
@@ -33,5 +34,11 @@ Route::get('categories/{category:slug}',function(Category $category){
     // dd($category->blogs);
     return view('blogs',[
         'blogs'=>$category->blogs
+    ]);
+});
+
+Route::get('/user/{user:name}',function(User $user){
+    return view('blogs',[
+        'blogs'=>$user->blogs
     ]);
 });
