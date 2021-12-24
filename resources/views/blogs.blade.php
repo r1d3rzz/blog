@@ -7,7 +7,7 @@
     @foreach ($blogs as $blog)
         <h1><a href="/blog/{{$blog->slug}}">{{$blog->title}}</a></h1>
 
-        <h3>Author - <a href="/users/{{$blog->author->id}}">{{$blog->author->name}}</a></h3>
+        <h3>Author - <a href="/users/{{$blog->author->username}}">{{$blog->author->name}}</a></h3>
 
         <p><a href="/categories/{{$blog->category->slug}}">{{$blog->category->title}}</a></p>
 
