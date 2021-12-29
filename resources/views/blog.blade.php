@@ -1,21 +1,12 @@
 <x-layout>
 
-    <x-slot name="title">
-        <title>
-            {{$blog->title}}
-        </title>
-    </x-slot>
+    <!-- single blog section -->
+    <x-single_blog :blog="$blog"/>
 
-    <h1>{{$blog->title}}</h1>
+    <!-- subscribe new blogs -->
+    <x-subscribe />
 
-    <h3>Author - <a href="/users/{{$blog->author->username}}">{{$blog->author->name}}</a></h3>
-
-    <h4>Category - <a href="/categories/{{$blog->category->slug}}">{{$blog->category->title}}</a></h4>
-
-    <span style="color: blue">{{$blog->created_at->diffForHumans()}}</span>
-
-    <p>{!!$blog->body!!}</p>
-
-    <p><a href="/">back to home</a></p>
+    <!-- Blogs You May Like -->
+    <x-blogs_you_may_like :randomBlogs="$randomBlogs"/>
 
 </x-layout>
