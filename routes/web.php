@@ -3,7 +3,6 @@
 use App\Models\Blog;
 use App\Models\Category;
 use App\Models\User;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,7 +18,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('blogs',[
-        'blogs'=>Blog::with('category','author')->latest()->get() //with pr yin eager load // lazy loading
+        'blogs'=>Blog::with('category','author')->latest()->get(), //with pr yin eager load // lazy loading
+        'categories'=>Category::all()
     ]);
 });
 
@@ -33,12 +33,15 @@ Route::get('/blog/{blog:slug}', function (Blog $blog) {
 
 Route::get('categories/{category:slug}',function(Category $category){
     return view('blogs',[
-        'blogs'=>$category->blogs->load('category','author')
+        'blogs'=>$category->blogs->load('category','author'),
+        'categories'=>Category::all(),
+        'currentCategory'=>$category
     ]);
 });
 
 Route::get('/users/{user:username}',function(User $user){
     return view('blogs',[
-        'blogs'=>$user->blogs->load('author','category')
+        'blogs'=>$user->blogs->load('author','category'),
+        'categories'=>Category::all()
     ]);
 });
