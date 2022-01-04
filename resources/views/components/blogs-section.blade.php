@@ -38,10 +38,27 @@
     </form>
     <div class="row">
 
-        @foreach ($blogs as $blog)
+        {{-- Method One --}}
+        {{-- @if ($blogs->count())
+            @foreach ($blogs as $blog)
+                <div class="col-md-4 mb-4">
+                    <x-blog-card :blog="$blog"/>
+                </div>
+            @endforeach
+        @else
+            <p class="text-center">Blogs Not Found</p>
+        @endif --}}
+
+                {{-- -------------------------------------------------------- --}}
+
+        {{-- Method Two --}}
+        @forelse ($blogs as $blog)
             <div class="col-md-4 mb-4">
                 <x-blog-card :blog="$blog"/>
             </div>
-        @endforeach
+        @empty
+            <p class="text-center">Blogs Not Found</p>
+        @endforelse
+
     </div>
   </section>
