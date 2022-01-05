@@ -11,7 +11,7 @@ class BlogController extends Controller
     public function index() {
 
         return view('blogs',[
-            'blogs'=>$this->getBlogs(),
+            'blogs'=>Blog::with('category','author')->latest()->filter(request(['search']))->get(),
             'categories'=>Category::all()
         ]);
     }
@@ -23,12 +23,7 @@ class BlogController extends Controller
         ]);
     }
 
-    protected function getBlogs() {
-        $blogs = Blog::with('category','author')->latest();
-        if(request('search')){
-            $blogs = $blogs->where('title','LIKE','%'.request('search').'%')
-                            ->orWhere('body','LIKE','%'.request('search').'%');
-        }
-        return $blogs->get();
-    }
+    // protected function getBlogs() {
+    //     return Blog::with('category','author')->latest()->filter()->get();
+    // }
 }

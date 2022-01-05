@@ -10,7 +10,14 @@ class Blog extends Model
     use HasFactory;
     protected $guarded = ['id'];
 
-    // protected $with = ['author','category']; All Load N+1 problem
+    public function scopeFilter($query, $filter){
+        // $query = Blog::with('category','author')->latest();
+        $query->when($filter['search']??false,function($query, $search) {
+            $query->where('title','LIKE','%'.$search.'%')
+                    ->orWhere('body','LIKE','%'.$search.'%');
+        });
+        // return $query->get();
+    }
 
     public function category(){
         return $this->belongsTo(Category::class);
