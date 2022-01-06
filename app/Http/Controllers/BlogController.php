@@ -9,10 +9,9 @@ use Illuminate\Http\Request;
 class BlogController extends Controller
 {
     public function index() {
-
         return view('blogs',[
-            'blogs'=>Blog::with('category','author')->latest()->filter(request(['search']))->get(),
-            'categories'=>Category::all()
+            'blogs'=>Blog::with('category','author')->latest()->filter(request(['search','category']))->get(),
+            'categories'=>Category::all(),
         ]);
     }
 
@@ -22,8 +21,4 @@ class BlogController extends Controller
             'randomBlogs' => Blog::inRandomOrder()->take(3)->get()
         ]);
     }
-
-    // protected function getBlogs() {
-    //     return Blog::with('category','author')->latest()->filter()->get();
-    // }
 }

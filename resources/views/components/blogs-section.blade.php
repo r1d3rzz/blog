@@ -9,7 +9,7 @@
             </button>
             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
               @foreach ($categories as $category)
-                <li><a class="dropdown-item" href="/categories/{{$category->slug}}">{{$category->title}}</a></li>
+                <li><a class="dropdown-item" href="/?category={{$category->slug}}">{{$category->title}}</a></li>
               @endforeach
             </ul>
           </div>
@@ -17,7 +17,7 @@
         <option value="">Filter by Tag</option>
       </select> --}}
     </div>
-    <form action="" class="my-3"> {{-- ('' = '/' and Nothing write method name = GET method ) --}}
+    <form action="" class="my-3">
       <div class="input-group mb-3">
         <input
           type="text"
@@ -38,20 +38,6 @@
     </form>
     <div class="row">
 
-        {{-- Method One --}}
-        {{-- @if ($blogs->count())
-            @foreach ($blogs as $blog)
-                <div class="col-md-4 mb-4">
-                    <x-blog-card :blog="$blog"/>
-                </div>
-            @endforeach
-        @else
-            <p class="text-center">Blogs Not Found</p>
-        @endif --}}
-
-                {{-- -------------------------------------------------------- --}}
-
-        {{-- Method Two --}}
         @forelse ($blogs as $blog)
             <div class="col-md-4 mb-4">
                 <x-blog-card :blog="$blog"/>
