@@ -21,8 +21,3 @@ Route::get('/', [BlogController::class,'index']);
 
 Route::get('/blog/{blog:slug}', [BlogController::class,'show']);
 
-Route::get('/users/{user:username}',function(User $user){
-    return view('blogs',[
-        'blogs'=>$user->blogs->load('author','category'),
-    ]);
-});

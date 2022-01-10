@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use PhpParser\Node\Expr\FuncCall;
 
 class Blog extends Model
 {
@@ -21,6 +22,12 @@ class Blog extends Model
         $query->when($filter['category']??false,function($query, $slug) {
             $query->whereHas('category',function($query)use($slug){
                 $query->where('slug',$slug);
+            });
+        });
+
+        $query->when($filter['user']??false,function($query, $username){
+            $query->whereHas('author',function($query) use($username) {
+                $query->where('username',$username);
             });
         });
     }
