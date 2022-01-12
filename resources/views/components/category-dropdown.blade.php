@@ -3,8 +3,14 @@
       {{isset($currentCategory) ? $currentCategory->title : "Filter By Category"}}
     </button>
     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+        <li><a href="/" class="dropdown-item">All Blogs</a></li>
       @foreach ($categories as $category)
-        <li><a class="dropdown-item" href="/?category={{$category->slug}}">{{$category->title}}</a></li>
+        <li>
+          <a class="dropdown-item"
+            href="/?category={{$category->slug}}{{request('search') ? '&search='.request('search') : ''}}{{request('user') ? '&user='.request('user') : ''}}">
+            {{$category->title}}
+          </a>
+        </li>
       @endforeach
     </ul>
   </div>
