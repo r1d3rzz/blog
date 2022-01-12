@@ -50,6 +50,6 @@
         @empty
             <p class="text-center">Blogs Not Found</p>
         @endforelse
-
+        {{$blogs->links()}} {{-- show for paginate number--}}
     </div>
   </section>

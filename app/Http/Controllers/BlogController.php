@@ -3,14 +3,16 @@
 namespace App\Http\Controllers;
 
 use App\Models\Blog;
-use App\Models\Category;
-use Illuminate\Http\Request;
 
 class BlogController extends Controller
 {
     public function index() {
         return view('blogs',[
-            'blogs'=>Blog::with('category','author')->latest()->filter(request(['search','category','user']))->get()
+            'blogs'=>Blog::with('category','author')
+                            ->latest()
+                            ->filter(request(['search','category','user']))
+                            ->paginate(6)//paginate can make 15 view cards
+                            ->withQueryString()//relation with category and pagination
         ]);
     }
 
