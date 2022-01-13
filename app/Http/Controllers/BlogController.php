@@ -12,6 +12,7 @@ class BlogController extends Controller
                             ->latest()
                             ->filter(request(['search','category','user']))
                             ->paginate(6)//paginate can make 15 view cards
+                            // ->simplePaginate(6) User for Only Show next and Previous Button
                             ->withQueryString()//relation with category and pagination
         ]);
     }
