@@ -21,3 +21,14 @@ Route::get('/', [BlogController::class,'index']);
 
 Route::get('/blog/{blog:slug}', [BlogController::class,'show']);
 
+
+
+//Laravel-controller-and-view-naming-conventions
+//For Blogs Project
+//all -> index -> blogs.index
+//single -> show -> blogs.show
+//form -> create -> blogs.create
+//server store -> store -> ---backend
+//edit form -> edit -> blogs.edit
+//server update -> update -> ---backend
+//server delete -> destroy -> ---backend
