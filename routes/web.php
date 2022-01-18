@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BlogController;
 use App\Models\Blog;
 use App\Models\Category;
@@ -21,6 +22,7 @@ Route::get('/', [BlogController::class,'index']);
 
 Route::get('/blog/{blog:slug}', [BlogController::class,'show']);
 
+Route::get('/register',[AuthController::class,'create']);
 
 
 //Laravel-controller-and-view-naming-conventions
