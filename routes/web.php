@@ -24,6 +24,8 @@ Route::get('/blog/{blog:slug}', [BlogController::class,'show']);
 
 Route::get('/register',[AuthController::class,'create']);
 
+Route::post('/register',[AuthController::class,'store']);
+
 
 //Laravel-controller-and-view-naming-conventions
 //For Blogs Project
