@@ -47,4 +47,18 @@ class User extends Authenticatable
     {
         return $this->hasMany(Blog::class);
     }
+
+    //Accessors and mutators Attribute eg.(setColumnAttribute)
+
+    public function setPasswordAttribute($value)// This is the mutators,Use in dataInsert Time Change Data
+    {
+        $this->attributes['password']=bcrypt($value);
+    }
+
+    public function getNameAttribute($value) //This is the Accessors, Use in Show Data in UI Change data
+    {
+        return ucfirst($value);
+    }
+
+    //end Accessors, mutators
 }
