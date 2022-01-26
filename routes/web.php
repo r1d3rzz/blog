@@ -22,9 +22,11 @@ Route::get('/', [BlogController::class,'index']);
 
 Route::get('/blog/{blog:slug}', [BlogController::class,'show']);
 
-Route::get('/register',[AuthController::class,'create']);
+Route::get('/register', [AuthController::class,'create']);
 
-Route::post('/register',[AuthController::class,'store']);
+Route::post('/register', [AuthController::class,'store']);
+
+Route::post('/logout', [AuthController::class,'logout']);
 
 
 //Laravel-controller-and-view-naming-conventions
@@ -36,3 +38,15 @@ Route::post('/register',[AuthController::class,'store']);
 //edit form -> edit -> blogs.edit
 //server update -> update -> ---backend
 //server delete -> destroy -> ---backend
+
+//Login and Logout
+/*
+
+1. login => auth()->login($user);
+2. logout => auth()->logout() and return();
+3. check => auth()->check();
+4. show => auth() ->user()->name / username / whateverYouLike
+5. @auth => login in Exits
+6. @guest => Register show
+
+*/
