@@ -24,11 +24,8 @@ class AuthController extends Controller
             'password'=>['required','min:5','max:50']
         ]);
 
-
-        //already taken => Rule::unique('table','cplumn'); note ****
-
-        User::create($formData);
-
-        return redirect('/');
+        $user = User::create($formData);
+        // session()->flash('success', "Welcome Dear, ".$user->name); //first way
+        return redirect('/')->with('success', 'Welcome Dear, '.$user->name); //second Way
     }
 }
