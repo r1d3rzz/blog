@@ -39,7 +39,7 @@ class AuthController extends Controller
 
     public function post_login()
     {
-        request()->validate([
+        $formData = request()->validate([
             'email'=>['required',Rule::exists('users', 'email')],
             'password'=>['required','min:5','max:50']
         ], [
@@ -48,7 +48,14 @@ class AuthController extends Controller
             'password.required'=>'Password is need More Than 5 Characters'
         ]);
 
-        dd(request()->all());
+        //Login Validation
+        if (auth()->attempt($formData)) {
+            return redirect('/')->with('success', 'Welcome Back');
+        } else {
+            return redirect()->back()->withErrors([
+                'email' => 'User Credentials Wrong'
+            ]);
+        }
     }
 
     public function logout()
