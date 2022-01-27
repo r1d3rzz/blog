@@ -28,6 +28,10 @@ Route::post('/register', [AuthController::class,'store']);
 
 Route::post('/logout', [AuthController::class,'logout']);
 
+Route::get('/login', [AuthController::class,'login']);
+
+Route::post('/login', [AuthController::class,'post_login']);
+
 
 //Laravel-controller-and-view-naming-conventions
 //For Blogs Project

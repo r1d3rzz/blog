@@ -10,7 +10,7 @@ class AuthController extends Controller
 {
     public function create()
     {
-        return view('register.create');
+        return view('auth.register');
     }
 
     public function store()
@@ -30,6 +30,25 @@ class AuthController extends Controller
         auth()->login($user);
 
         return redirect('/')->with('success', 'Welcome Dear, '.$user->name);
+    }
+
+    public function login()
+    {
+        return view('auth.login');
+    }
+
+    public function post_login()
+    {
+        request()->validate([
+            'email'=>['required',Rule::exists('users', 'email')],
+            'password'=>['required','min:5','max:50']
+        ], [
+            //for Custom Error Message in Validation
+            'email.required'=>'Please Enter Your Email Address.',
+            'password.required'=>'Password is need More Than 5 Characters'
+        ]);
+
+        dd(request()->all());
     }
 
     public function logout()
