@@ -22,15 +22,15 @@ Route::get('/', [BlogController::class,'index']);
 
 Route::get('/blog/{blog:slug}', [BlogController::class,'show']);
 
-Route::get('/register', [AuthController::class,'create']);
+Route::get('/register', [AuthController::class,'create'])->middleware('guest');
 
-Route::post('/register', [AuthController::class,'store']);
+Route::post('/register', [AuthController::class,'store'])->middleware('guest');
 
-Route::post('/logout', [AuthController::class,'logout']);
+Route::post('/logout', [AuthController::class,'logout'])->middleware('auth');
 
-Route::get('/login', [AuthController::class,'login']);
+Route::get('/login', [AuthController::class,'login'])->middleware('guest');
 
-Route::post('/login', [AuthController::class,'post_login']);
+Route::post('/login', [AuthController::class,'post_login'])->middleware('guest');
 
 
 //Laravel-controller-and-view-naming-conventions
