@@ -4,7 +4,7 @@
     <x-single_blog :blog="$blog" />
 
     <!-- comment Section -->
-    <x-comments />
+    <x-comments :comments="$blog->comments" />
 
     <!-- subscribe new blogs -->
     <x-subscribe />
