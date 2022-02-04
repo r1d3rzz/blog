@@ -9,7 +9,6 @@ use PhpParser\Node\Expr\FuncCall;
 class Blog extends Model
 {
     use HasFactory;
-    protected $guarded = ['id'];
 
     public function scopeFilter($query, $filter)
     {
