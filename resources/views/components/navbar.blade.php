@@ -11,6 +11,7 @@
             <a href="/login" class="nav-link">Login</a>
             @else
             <a href="" class="nav-link">{{auth()->user()->name}}</a>
+            <img src="{{auth()->user()->avatar}}" width="40" class="rounded-circle" alt="{{auth()->user()->username}}">
             <form action="/logout" method="POST">@csrf
                 <button class="btn btn-link nav-link">
                     logout
