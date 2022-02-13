@@ -56,4 +56,10 @@ class User extends Authenticatable
     }
 
     //end Accessors, mutators
+
+    //Many to Many Relation
+    public function subscribedBlogs()
+    {
+        return $this->belongsToMany(Blog::class);
+    }
 }

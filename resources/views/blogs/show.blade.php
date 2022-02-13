@@ -15,9 +15,6 @@
     <x-comments :comments="$blog->comments" />
     @endif
 
-    <!-- subscribe new blogs -->
-    <x-subscribe />
-
     <!-- Blogs You May Like -->
     <x-blogs_you_may_like :randomBlogs="$randomBlogs" />
 
