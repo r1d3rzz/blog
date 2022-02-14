@@ -12,7 +12,13 @@
                 <span> - {{$blog->created_at->diffForHumans()}}</span>
             </p>
 
-            <button class="btn btn-warning">Subscribe</button>
+            <form action="" method="POST">
+                @if (auth()->user()->isSubscribe($blog))
+                <button class="btn btn-danger">unsubscribe</button>
+                @else
+                <button class="btn btn-warning">subscribe</button>
+                @endif
+            </form>
 
             <div class="tags my-3">
                 <a href="/?category={{$blog->category->slug}}"><span
