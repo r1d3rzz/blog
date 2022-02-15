@@ -12,12 +12,14 @@
                 <span> - {{$blog->created_at->diffForHumans()}}</span>
             </p>
 
-            <form action="" method="POST">
+            <form action="/blog/{{$blog->slug}}/subscription" method="POST">@csrf
+                @auth
                 @if (auth()->user()->isSubscribe($blog))
                 <button class="btn btn-danger">unsubscribe</button>
                 @else
                 <button class="btn btn-warning">subscribe</button>
                 @endif
+                @endauth
             </form>
 
             <div class="tags my-3">
