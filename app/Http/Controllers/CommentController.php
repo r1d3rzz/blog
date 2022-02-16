@@ -37,7 +37,18 @@ class CommentController extends Controller
 
         //Foreach Loop ShortHand
         $subscribers->each(function ($subscriber) use ($blog) {
-            Mail::to($subscriber->email)->send(new SubscriberMail($blog));
+            //make Mail Controller Comment
+            //php artisan make:mail SubscriberMail
+
+            //use send() (slow Website)
+            // Mail::to($subscriber->email)->send(new SubscriberMail($blog));
+
+            //use Queue Worker (for faster)
+            /*
+                user queque database first Create php artisan queue:table and change QUEUE_CONNECTION=database in .env
+                and run this queue worker run in terminal php artisan queue:work
+            */
+            Mail::to($subscriber->email)->queue(new SubscriberMail($blog));
         });
 
         return redirect("/blog/$blog->slug");
