@@ -16,19 +16,25 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+//SHow Blogs
 Route::get('/', [BlogController::class,'index']);
 Route::get('/blog/{blog:slug}', [BlogController::class,'show']);
 
+//creaet Comment
 Route::post('/blog/{blog:slug}/comments', [CommentController::class,'store']);
 
+//User Register Login Logout
 Route::get('/register', [AuthController::class,'create'])->middleware('guest');
 Route::post('/register', [AuthController::class,'store'])->middleware('guest');
 Route::post('/logout', [AuthController::class,'logout'])->middleware('auth');
 Route::get('/login', [AuthController::class,'login'])->middleware('guest');
 Route::post('/login', [AuthController::class,'post_login'])->middleware('guest');
 
+//Subscribe
 Route::post('/blog/{blog:slug}/subscription', [BlogController::class,'subscriptionHandler']);
 
+//admin
+Route::get('/admin/blog/create', [BlogController::class,'create'])->middleware('admin');
 
 //Laravel-controller-and-view-naming-conventions
 //For Blogs Project
