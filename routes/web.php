@@ -35,6 +35,7 @@ Route::post('/blog/{blog:slug}/subscription', [BlogController::class,'subscripti
 
 //admin
 Route::get('/admin/blog/create', [BlogController::class,'create'])->middleware('admin');
+Route::post('/admin/blog/store', [BlogController::class,'store'])->middleware('admin');
 
 //Laravel-controller-and-view-naming-conventions
 //For Blogs Project
