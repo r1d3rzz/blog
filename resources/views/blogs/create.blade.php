@@ -5,7 +5,7 @@
         <div class="row">
             <div class="col-md-8 mx-auto">
                 <x-card-wrapper>
-                    <form action="/admin/blog/store" method="POST">@csrf
+                    <form action="/admin/blog/store" method="POST" enctype="multipart/form-data">@csrf
                         <div class="my-3">
                             <label for="title" class="mb-1">
                                 <h4>Title</h4>
@@ -37,6 +37,14 @@
                             <textarea value="{{old('body')}}" name="body" id="body" cols="10" rows="10"
                                 class="form-control"></textarea>
                             <x-error name="body" />
+                        </div>
+
+                        <div class="my-3">
+                            <label for="thumbnail" class="mb-1">
+                                <h4>Thumnail</h4>
+                            </label>
+                            <input type="file" name="thumbnail" id="thumbnail" class="form-control">
+                            <x-error name="thumbnail" />
                         </div>
 
                         <div class="my-3">
