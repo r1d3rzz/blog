@@ -26,9 +26,11 @@
                         class="badge bg-primary">{{$blog->category->title}}</span></a>
             </div>
 
-            <p class="lh-md">
-                {{$blog->body}}
-            </p>
+            <div class="text-start">
+                <p class="lh-md">
+                    {!!$blog->body!!}
+                </p>
+            </div>
 
         </div>
     </div>
