@@ -35,9 +35,10 @@ Route::post('/login', [AuthController::class,'post_login'])->middleware('guest')
 Route::post('/blog/{blog:slug}/subscription', [BlogController::class,'subscriptionHandler']);
 
 //admin
-Route::get('/admin/blog/create', [BlogController::class,'create'])->middleware('admin');
-Route::post('/admin/blog/store', [BlogController::class,'store'])->middleware('admin');
 Route::get('/admin/blogs', [AdminBlogController::class,'index'])->middleware('admin');
+Route::get('/admin/blog/create', [AdminBlogController::class,'create'])->middleware('admin');
+Route::post('/admin/blog/store', [AdminBlogController::class,'store'])->middleware('admin');
+Route::delete('/admin/{blog:slug}/delete', [AdminBlogController::class,'destroy'])->middleware('admin');
 
 //Laravel-controller-and-view-naming-conventions
 //For Blogs Project
