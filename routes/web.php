@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminBlogController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\CommentController;
@@ -36,6 +37,7 @@ Route::post('/blog/{blog:slug}/subscription', [BlogController::class,'subscripti
 //admin
 Route::get('/admin/blog/create', [BlogController::class,'create'])->middleware('admin');
 Route::post('/admin/blog/store', [BlogController::class,'store'])->middleware('admin');
+Route::get('/admin/blogs', [AdminBlogController::class,'index'])->middleware('admin');
 
 //Laravel-controller-and-view-naming-conventions
 //For Blogs Project
