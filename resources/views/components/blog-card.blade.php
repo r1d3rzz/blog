@@ -1,7 +1,9 @@
 @props(['blog'])
 
 <div class="card">
+    @if ($blog->thumbnail)
     <img src='{{asset("storage/$blog->thumbnail")}}' alt="{{$blog->thumbnail}}" />
+    @endif
     <div class="card-body">
         <h3 class="card-title">{{$blog->title}}</h3>
         <p class="fs-6 text-secondary">

@@ -15,9 +15,14 @@
                         <tbody>
                             @forelse ($blogs as $blog)
                             <tr>
-                                <td><b>{{$blog->title}}</b></td>
+                                <td><a href="/blog/{{$blog->slug}}" target="_blank"><b>{{$blog->title}}</b></a></td>
                                 <td>{{$blog->intro}}</td>
-                                <td><a href="/" class="btn btn-warning">edit</a></td>
+                                <td>
+                                    <form action="/admin/blog/{{$blog->slug}}/edit" method="GET">
+                                        @csrf
+                                        <button type="submit" class="btn btn-warning">edit</button>
+                                    </form>
+                                </td>
                                 <td>
                                     <form action="/admin/{{$blog->slug}}/delete" method="POST">
                                         @csrf

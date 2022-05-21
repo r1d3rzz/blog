@@ -1,9 +1,11 @@
 @props(['blog'])
 
 <div class="container">
-    <div class="row">
+    <div class="row mt-5">
         <div class="col-md-6 mx-auto text-center">
-            <img src='{{asset("storage/$blog->thumbnail")}}' class="card-img-top" alt="..." />
+            @if ($blog->thumbnail)
+            <img src='{{asset("storage/$blog->thumbnail")}}' width="500" alt="{{$blog->thumbnail}}" />
+            @endif
             <h3 class="my-3">{{$blog->title}}</h3>
 
             <p class="fs-6 text-secondary">
