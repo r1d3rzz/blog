@@ -4,12 +4,13 @@
         <div class="d-flex">
             <a href="#home" class="nav-link">Home</a>
             <a href="#blogs" class="nav-link">Blogs</a>
-            <a href="#subscribe" class="nav-link">Subscribe</a>
-
             @guest
             <a href="/register" class="nav-link">Register</a>
             <a href="/login" class="nav-link">Login</a>
             @else
+            @can('admin')
+            <a href="/admin/blogs" class="nav-link">Dashboard</a>
+            @endcan
             <a href="" class="nav-link">{{auth()->user()->name}}</a>
             <img src="{{auth()->user()->avatar}}" width="40" class="rounded-circle" alt="{{auth()->user()->username}}">
             <form action="/logout" method="POST">@csrf

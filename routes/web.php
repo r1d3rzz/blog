@@ -35,12 +35,15 @@ Route::post('/login', [AuthController::class,'post_login'])->middleware('guest')
 Route::post('/blog/{blog:slug}/subscription', [BlogController::class,'subscriptionHandler']);
 
 //admin
-Route::get('/admin/blogs', [AdminBlogController::class,'index'])->middleware('admin');
-Route::get('/admin/blog/create', [AdminBlogController::class,'create'])->middleware('admin');
-Route::post('/admin/blog/store', [AdminBlogController::class,'store'])->middleware('admin');
-Route::delete('/admin/{blog:slug}/delete', [AdminBlogController::class,'destroy'])->middleware('admin');
-Route::get('/admin/blog/{blog:slug}/edit', [AdminBlogController::class,'edit'])->middleware('admin');
-Route::patch('/admin/blog/{blog:slug}/update', [AdminBlogController::class,'update'])->middleware('admin');
+
+Route::middleware('can:admin')->group(function () {
+    Route::get('/admin/blogs', [AdminBlogController::class,'index']);
+    Route::get('/admin/blog/create', [AdminBlogController::class,'create']);
+    Route::post('/admin/blog/store', [AdminBlogController::class,'store']);
+    Route::delete('/admin/{blog:slug}/delete', [AdminBlogController::class,'destroy']);
+    Route::get('/admin/blog/{blog:slug}/edit', [AdminBlogController::class,'edit']);
+    Route::patch('/admin/blog/{blog:slug}/update', [AdminBlogController::class,'update']);
+});
 
 //Laravel-controller-and-view-naming-conventions
 //For Blogs Project
